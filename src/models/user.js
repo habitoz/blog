@@ -10,6 +10,7 @@ class UserModel {
             },
             role: {
                 type: String,
+                default: 'Member',
                 enum: ['Admin', 'Author', 'Member']
             },
             email: {

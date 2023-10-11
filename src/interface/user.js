@@ -11,7 +11,7 @@ class UserRepo extends BaseRepo {
     constructor(model) {
         super(model);
     }
-    async getAll(query, exclude = []) {
+    async getAll(query, exclude = '-__v -password') {
         return await super.getAll(query, exclude)
     }
     async checkIfItExists(condition, populate) {
