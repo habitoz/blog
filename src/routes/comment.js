@@ -2,16 +2,20 @@ import express from 'express';
 import Comment from '../controller/comment.js';
 import CommentSchema from '../validators/Joi/schemas/comment.js';
 import valMiddleware from '../validators/Joi/middleware.js';
-    
+
 const router = express.Router();
-    
-router.get('/', Comment.getAll);
 
-router.get('/:id', Comment.get);
+router.get('/all/:blogId', Comment.getAll);
 
-router.put('/:id',valMiddleware(CommentSchema.updateComment), Comment.update);
+router.get('/active/:blogId', Comment.getActiveAll);
 
-router.post('/',valMiddleware(CommentSchema.addComment), Comment.insert);
+router.get('/detail/:id', Comment.get);
+
+router.put('/:id', valMiddleware(CommentSchema.updateComment), Comment.updateComment);
+
+router.put('/status/:id', valMiddleware(CommentSchema.statusChange), Comment.updateStatus);
+
+router.post('/:blogId', valMiddleware(CommentSchema.addComment), Comment.addComment);
 
 router.delete('/:id', Comment.delete);
 

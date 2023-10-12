@@ -18,6 +18,9 @@ class CommentRepo extends BaseRepo {
     async checkIfItExists(condition, populate) {
         return await super.checkIfItExists(condition, populate);
     }
+    async addReplayCount(commentId) {
+        return await this.update(commentId, { $inc: { replayCount: 1 } })
+    }
 };
 
 export default new CommentRepo(Comment);
