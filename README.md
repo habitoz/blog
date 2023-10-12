@@ -24,7 +24,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 Football Standings <a name="about-project"></a>
+# 📖 Blog API <a name="about-project"></a>
 
 **Blog API** is an application built for demonstration that allows users to browse blogs comment on them. this application is built using node js with express server and mongoDB.
 
@@ -36,6 +36,20 @@
   <summary>Node js</summary>
   <ul>
     <li><a href="https://nodejs.org/en">Node JS</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Express</summary>
+  <ul>
+    <li><a href="https://expressjs.com/">Express JS</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>MongoDB</summary>
+  <ul>
+    <li><a href="https://www.mongodb.com/">Mongo DB</a></li>
   </ul>
 </details>
 
@@ -119,8 +133,8 @@ To run linter tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- \*_Adding Gallery Module_
-- **Improve Algorithm used for Like and View**
+- _Adding Gallery Module_
+- _Improve Algorithm used for Like and View_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
