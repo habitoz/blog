@@ -23,7 +23,6 @@ class Controller {
     }
 
     async insert(req, res) {
-        console.log(require.main.filename);
         const response = await this.service.repo.insert(req.body);
         if (response.error) return res.status(response.statusCode).send(response);
         return res.status(201).send(response);

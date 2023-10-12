@@ -12,6 +12,10 @@ class BlogModel {
                 type: String,
                 required: true
             },
+            content: {
+                type: String,
+                required: true
+            },
             subTitle: String,
             deactivatedBy: {
                 type: mongoose.Types.ObjectId,
@@ -19,6 +23,18 @@ class BlogModel {
             },
             deactivatedAt: Date,
             likes: {
+                count: {
+                    type: Number,
+                    default: 0
+                },
+                users: [
+                    {
+                        type: mongoose.Types.ObjectId,
+                        ref: 'User'
+                    }
+                ]
+            },
+            views: {
                 count: {
                     type: Number,
                     default: 0

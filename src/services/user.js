@@ -29,7 +29,7 @@ class UserService extends Service {
     }
     async signIn(data) {
         try {
-            data.username = data.username.trim();
+            data.email = data.email.trim();
             const { isPresent, item } = await this.repo.checkIfItExists({ email: data.email });
             if (!isPresent)
                 return new this.errorResponse('Incorrect email or password', 400);
@@ -68,6 +68,7 @@ class UserService extends Service {
                 }
             }
         } catch (err) {
+            console.log(err);
             return new this.errorResponse()
         }
     }

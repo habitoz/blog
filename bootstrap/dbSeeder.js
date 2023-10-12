@@ -1,13 +1,24 @@
 import UserRepo from '../src/interface/user.js';
 
 export default async () => {
-    const data = {
-        fullname: 'Aksumay Super Admin',
+    const admin = {
+        fullname: 'Retink Super Admin',
         email: 'admin@retink.com',
-        password: UserRepo.hashPassword('12'),
+        password: UserRepo.hashPassword('123456'),
         role: 'Admin'
     };
-    const { isPresent } = await UserRepo.checkIfItExists({ username: data.username });
+    const author = {
+        fullname: 'Retink Blog Author',
+        email: 'author@retink.com',
+        password: UserRepo.hashPassword('123456'),
+        role: 'Author'
+    };
+    const { isPresent: authorExists } = await UserRepo.checkIfItExists({ email: author.email });
+    if (authorExists) return;
+    await UserRepo.insert(author);
+
+    const { isPresent } = await UserRepo.checkIfItExists({ email: admin.email });
     if (isPresent) return;
-    await UserRepo.insert(data);
+    await UserRepo.insert(admin);
+
 }
