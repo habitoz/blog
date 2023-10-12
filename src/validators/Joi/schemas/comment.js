@@ -10,7 +10,7 @@ const updateComment = Joi.object().keys({
 });
 
 const statusChange = Joi.object().keys({
-    status: Joi.string().required().valid(['Active', 'Inactive'])
+    // status: Joi.string().required().valid('Active', 'Inactive')
 });
 
 export default {

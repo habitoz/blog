@@ -3,17 +3,17 @@ import Joi from 'joi';
 const addUser = Joi.object().keys({
     fullname: Joi.string().required(),
     role: Joi.string().required().valid(['Admin', 'Author', 'Member']),
-    email: Joi.email().required(),
+    email: Joi.string().required(),
     password: Joi.string().required(),
 });
 const signup = Joi.object().keys({
     fullname: Joi.string().required(),
     role: Joi.string().required().valid(['Admin', 'Author', 'Member']),
-    email: Joi.email().required(),
+    email: Joi.string().required(),
     password: Joi.string().required(),
 });
 const signin = Joi.object().keys({
-    email: Joi.email().required(),
+    email: Joi.string().required(),
     password: Joi.string().required(),
 });
 

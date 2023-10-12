@@ -1,22 +1,21 @@
 import mongoose from "mongoose";
-import UpdateLogsRepo from './updateLogs';
 
 class BaseRepo {
     constructor(model) {
-            this.model = model;
-            this.getAll = this.getAll.bind(this);
-            this.insert = this.insert.bind(this);
-            this.update = this.update.bind(this);
-            this.delete = this.delete.bind(this);
-            this.updateByCondition = this.updateByCondition.bind(this);
-            
-        }
-        /**
-         * 
-         * @param {Object} query it accepts query keyword and page
-         * 
-         * @returns {Object} returns statuscode totalpages and data if exists
-         */
+        this.model = model;
+        this.getAll = this.getAll.bind(this);
+        this.insert = this.insert.bind(this);
+        this.update = this.update.bind(this);
+        this.delete = this.delete.bind(this);
+        this.updateByCondition = this.updateByCondition.bind(this);
+
+    }
+    /**
+     * 
+     * @param {Object} query it accepts query keyword and page
+     * 
+     * @returns {Object} returns statuscode totalpages and data if exists
+     */
     async search(query) {
         try {
             const page = query.page ? parseInt(query.page) : 1;
@@ -142,7 +141,7 @@ class BaseRepo {
         } catch (errors) {
             return {
                 error: true,
-                items:[],
+                items: [],
                 statusCode: 500,
                 message: "something went wrong",
             };
@@ -385,21 +384,6 @@ class BaseRepo {
                 statusCode: 500,
                 error,
             };
-        }
-    }
-    async updateLogs(schema, user, oldData, data) {
-        try {
-            const paths = [];
-            schema.eachPath((pathname, schematype) => { paths.push(pathname) });
-            const changes = [];
-            Object.keys(data).forEach(key => {
-                changes.push({ field: key, oldValue: oldData[key], newValue: data[key] })
-            });
-            return await UpdateLogsRepo.insert(user, { changes })
-        } catch (err) {
-            return {
-                error: true
-            }
         }
     }
 }

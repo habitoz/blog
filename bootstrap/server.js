@@ -6,10 +6,8 @@ import cors from "cors";
 import fs from "fs";
 import morgan from "morgan";
 import setRoutes from "./routes";
-// import setGraphql from "./graphql";
 import helmetEncapsulation from "./helmet";
 import app_auth from "../src/middleware/auth/app_auth";
-// import config from "config";
 
 const server = express();
 const accessLogStream = fs.createWriteStream(
@@ -17,12 +15,6 @@ const accessLogStream = fs.createWriteStream(
     flags: "a",
 }
 );
-
-// server.use((req, res, next) => {
-//     const message = 'new incomming request'
-//     UDP_CONNECTION.send(message, 0, message.length, config.get('s_port'), config.get('s_ip'))
-//     next();
-// });
 
 server.use(morgan("combined", { stream: accessLogStream }));
 server.use(
@@ -56,7 +48,6 @@ server.use(app_auth());
 server.use(express.json({ limit: "100kb" }));
 server.use("/api/photo", express.static("storage/images"));
 setRoutes(server);
-// setGraphql(server);
 
 server.use((err, req, res, next) => {
     res.send(err.message);

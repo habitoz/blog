@@ -3,9 +3,9 @@ import UserRepo from '../src/interface/user.js';
 export default async () => {
     const data = {
         fullname: 'Aksumay Super Admin',
-        email: 'sadmin@aksumay.com',
+        email: 'admin@retink.com',
         password: UserRepo.hashPassword('12'),
-        role: 'Super Admin'
+        role: 'Admin'
     };
     const { isPresent } = await UserRepo.checkIfItExists({ username: data.username });
     if (isPresent) return;
