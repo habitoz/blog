@@ -4,8 +4,8 @@ import seeder from "./dbSeeder";
 
 class Connection {
     constructor() {
-        const url = `mongodb://${config.get("db.host")}:${config.get("db.port")}/${config.get("db.name")}`;
-        //const url = `mongodb://${config.get('db.username')}:${config.get('db.password')}@${config.get('db.host')}:${config.get('db.port')}/${config.get('db.name')}`;
+        // const url = `mongodb://${config.get("db.host")}:${config.get("db.port")}/${config.get("db.name")}`;
+        const url = `mongodb+srv://${config.get('db.username')}:${config.get('db.password')}@${config.get('db.host')}/${config.get('db.name')}?retryWrites=true&w=majority`;
         console.log("Establish new connection with db");
         // mongoose.Promise = global.Promise;
         // mongoose.set("useNewUrlParser", true);
@@ -15,6 +15,7 @@ class Connection {
             await seeder();
             console.log("db seeded succesfully ..");
         }).catch(err => {
+            console.log(err);
             console.log(err.message || "failed to reach database ....");
         });
     }

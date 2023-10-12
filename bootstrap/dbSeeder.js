@@ -13,12 +13,12 @@ export default async () => {
         password: UserRepo.hashPassword('123456'),
         role: 'Author'
     };
-    const { isPresent: authorExists } = await UserRepo.checkIfItExists({ email: author.email });
-    if (authorExists) return;
-    await UserRepo.insert(author);
 
     const { isPresent } = await UserRepo.checkIfItExists({ email: admin.email });
     if (isPresent) return;
     await UserRepo.insert(admin);
 
+    const { isPresent: authorExists } = await UserRepo.checkIfItExists({ email: author.email });
+    if (authorExists) return;
+    await UserRepo.insert(author);
 }

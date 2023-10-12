@@ -63,8 +63,6 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://football-standing.onrender.com)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 ## 💻 Getting Started
 
@@ -104,6 +102,11 @@ To run the project check the configuration files in config folder , execute the 
 ```sh
   npm run start
 ```
+
+use the following credentials that are seeded to the app.
+
+- admin email ==> admin@retink.com password ==> 123456
+- author email ==> author@retink.com password ==> 123456
 
 ### Run tests
 
