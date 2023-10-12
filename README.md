@@ -108,6 +108,99 @@ use the following credentials that are seeded to the app.
 - admin email ==> admin@retink.com password ==> 123456
 - author email ==> author@retink.com password ==> 123456
 
+### End points
+
+- the system has 3 users author,admin and members. to create a blog you have to use a user with author role and to manage users you have to use a user with admin role.
+- Authorization Mechanism => Bearer token
+
+- User
+  - Get All Users
+    - method => Get
+    - url => /v1/api/user
+  - Signin
+    - method => POST
+    - url => /v1/api/user/signin
+    - body => email,password
+  - Add User
+    - method => POST
+    - url => /v1/api/user/addUser
+    - body => fullname,email,role,password
+  - Signup
+    - method => POST
+    - url => /v1/api/user/signup
+    - body => fullname,email,role,password
+  - Delete User
+    - method => DELETE
+    - url => /v1/api/user/:userId
+    - info => delet user
+- Blog
+  - Add Blog
+    - method => POST
+    - url => /v1/api/blog
+    - body => title,subTitle,content
+  - Get All Blogs
+    - method => GET
+    - url => /v1/api/blog
+    - info => get all blogs
+  - Get Active Blogs
+    - method => GET
+    - url => /v1/api/blog/active
+    - info => get active blogs
+  - View Blog
+    - method => GET
+    - url => /v1/api/blog/view/:blogId
+    - info => read blog
+  - Like Blog
+    - method => PUT
+    - url => /v1/api/blog/like/:blogId
+    - info => like blog
+  - Update Blog
+    - method => PUT
+    - url => /v1/api/blog/:blogId
+    - body => title,subTitle,content
+    - info => update blog
+  - Change Status of Blog
+    - method => PUT
+    - url => /v1/api/blog/status/:blogId
+    - body => status
+    - info => update status of a blog into Inactive or Active
+  - Delete Blog
+    - method => DELETE
+    - url => /v1/api/blog/:blogId
+    - info => delete blog
+  - Signup
+    - method => POST
+    - url => /v1/api/user/signup
+    - body => fullname,email,role,password
+- Comment
+  - Add Comment
+    - method => POST
+    - url => /v1/api/comment/:blogId
+    - body => comment, parent(if it is replay)
+    - info => add blog comment
+  - Get ALL Comments
+    - method => GET
+    - url => /v1/api/comment/all/:blogId
+    - info => get all comments of a blog including the inactive ones
+  - Get Active Comments
+    - method => GET
+    - url => /v1/api/comment/active/:blogId
+    - info => get comments of a blog only the inactive ones
+  - Update Comment
+    - method => PUT
+    - url => /v1/api/comment/:commentId
+    - body => comment
+    - info => update blog comment
+  - Change Comment Status
+    - method => PUT
+    - url => /v1/api/comment/status/:commentId
+    - body => status
+    - info => update status of a comment into Inactive or Active
+  - Delete Comment
+    - method => DELETE
+    - url => /v1/api/comment/:commentId
+    - info => delete a comment
+
 ### Run tests
 
 To run tests, run the following command:
